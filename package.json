@@ -24,6 +24,11 @@
     "test": "npm-run-all lint test:*",
     "test:ember": "ember test",
     "test:ember-compatibility": "ember try:each",
+    "test:cov": "COVERAGE=true ember test",
+    "test:cov:default": "COVERAGE=true ember test",
+    "test:cov:bs4": "COVERAGE=true ember try:one ember-default-with-ember-bootstrap-v4 --- ember test",
+    "test:cov:bs5": "COVERAGE=true ember try:one ember-default-with-ember-bootstrap-v5 --- ember test",
+    "test:cov:plain-html": "COVERAGE=true ember try:one ember-default-with-plain-html --- ember test",
     "prepack": "ember ts:precompile",
     "postpack": "ember ts:clean"
   },

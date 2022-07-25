@@ -89,3 +89,30 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Run Tests
         run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }}
+
+  coverage:
+    name: Coverage Report
+    needs: [Test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12.x
+          cache: yarn
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Generage Report
+        run: |
+          chmod +x coverage.sh
+          ./coverage.sh default
+          ./coverage.sh plain-html
+          ./coverage.sh bs4
+          ./coverage.sh bs5
+          ./node_modules/.bin/lcov-result-merger "lcov-*.info" "lcov.info"
+      - name: Publish report
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: "./lcov.info"
