@@ -1,0 +1,16 @@
+{{#let
+  (hash
+    Select=(
+      component (ensure-safe-component @themeInstance.selectComponent)
+      options=this.filters
+      value=this.filterType
+      type="string"
+      themeInstance=@themeInstance
+    )
+  )
+as |FloatingFilter|
+}}
+  {{#if (has-block)}}
+    {{yield FloatingFilter}}
+  {{/if}}
+{{/let}}

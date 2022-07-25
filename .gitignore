@@ -30,3 +30,9 @@
 
 # broccoli-debug
 /DEBUG/
+
+/docs
+.idea
+
+# stryker temp files
+.stryker-tmp

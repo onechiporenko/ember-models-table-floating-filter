@@ -1,5 +1,20 @@
-{{page-title "Dummy"}}
-
-<h2 id="title">Welcome to Ember</h2>
-
-{{outlet}}
+{{page-title "Ember Models Table Floating Filters"}}
+<div class={{this.containerClass}}>
+  <h1>Ember Models Table Floating Filters</h1>
+  <pre>ember i ember-models-table-floating-filter</pre>
+  {{#if this.fw.isBs4}}
+    {{outlet}}
+  {{/if}}
+  {{#if this.fw.isBs5}}
+    {{outlet}}
+  {{/if}}
+  {{#if this.fw.isPlainHtml}}
+    <p class="alert">
+      <strong>IMPORTANT!</strong> Styles for plain-html theme are <strong>NOT</strong> included to the package. You
+      should use your own or copy from <a
+      href="https://github.com/onechiporenko/ember-models-table/blob/master/tests/dummy/app/styles/plain-html.scss"
+      target="_blank" rel="noopener noreferrer">dummy/plain-html.scss</a>.
+    </p>
+    {{outlet}}
+  {{/if}}
+</div>

@@ -1,0 +1,115 @@
+{{#let
+  (hash
+    Select=(
+      component (ensure-safe-component @themeInstance.selectComponent)
+      options=this.filters
+      value=this.filterType
+      type="string"
+      themeInstance=@themeInstance
+    )
+  )
+as |FloatingFilter|
+}}
+  {{#if (has-block)}}
+    {{yield FloatingFilter}}
+  {{else}}
+    <BsDropdown
+      @closeOnMenuClick={{false}}
+      as |dd|>
+      <div
+        {{did-insert this.updateFilterTypeOnInit}}
+        class="input-group">
+        <Input
+          aria-label=""
+          class="{{@themeInstance.input}}"
+          readonly="readonly"
+          @type="text"
+          @value={{this.filtersHumanReadable}}/>
+        <BsButton
+          class="clearFilterIcon {{@themeInstance.buttonLink}}"
+          @type="secondary"
+          disabled={{unless @column.filterUsed "disabled"}}
+          @outline={{true}}
+          @onClick={{@clearColumnFilter}}>
+          <i class={{@themeInstance.clearFilterIcon}}></i>
+          <span class="visually-hidden">{{@themeInstance.clearFilterMsg}}</span>
+        </BsButton>
+
+        <dd.toggle class="btn btn-outline-secondary">
+          <i class={{this.filterIcon}}></i>
+        </dd.toggle>
+        {{#if dd.isOpen}}
+          <BsForm
+            class="float-filter-dropdown-menu dropdown-menu dropdown-menu-right show p-2"
+            @formLayout="inline"
+            @model={{this}}
+            as |form|>
+            {{#if this.isListFilterType}}
+              <div class="row mb-2">
+                <div class="col">
+                  <Input
+                    aria-label=""
+                    class="{{@themeInstance.input}}"
+                    @type="text"
+                    @value={{this.filterForListFilterOptions}} />
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col">
+                  <BsButton @size="sm" @type="secondary" @outline={{true}} @onClick={{this.selectAllListFilterOptions}}>
+                    {{this.selectAllListFilterOptionsButtonText}}
+                  </BsButton>
+                  <BsButton @size="sm" @type="secondary" @outline={{true}} @onClick={{this.deselectAllListFilterOptions}}>
+                    {{this.deselectAllListFilterOptionsButtonText}}
+                  </BsButton>
+                </div>
+              </div>
+              <div class="list-filter-options-wrapper">
+                {{#each this.filteredListFilterOptions as |option index|}}
+                  <form.element
+                    class="checkbox-wrapper"
+                    @controlType="checkbox"
+                    @label={{option.label}}
+                    @property={{concat "filteredListFilterOptions." index ".checked"}} />
+                {{/each}}
+              </div>
+            {{else}}
+              <div class="row mb-2">
+                <div class="col">
+                  <FloatingFilter.Select @changeValue={{this.updateFilter}}/>
+                </div>
+              </div>
+              <div class="row g-2 mb-2">
+                {{#if this.showFirstArgInput}}
+                  <div class="col-auto">
+                    <Input
+                      aria-label="First Arg"
+                      class="{{@themeInstance.input}}"
+                      @type={{this.argsInputType}}
+                      @value={{this.filterArgsFirst}} />
+                  </div>
+                {{/if}}
+                {{#if this.showSecondArgInput}}
+                  <div class="col-auto"> - </div>
+                  <div class="col-auto">
+                    <Input
+                      aria-label="Second Arg"
+                      class="{{@themeInstance.input}}"
+                      @type={{this.argsInputType}}
+                      @value={{this.filterArgsSecond}} />
+                  </div>
+                {{/if}}
+              </div>
+            {{/if}}
+            <div class="row mb-2">
+              <div class="col-auto">
+                <BsButton @type="secondary" @outline={{true}} @onClick={{fn this.onUpdateColumnFilter dd.closeDropdown}}>{{this.applyFilterButtonText}}</BsButton>
+                <BsButton @type="secondary" @outline={{true}} @onClick={{dd.closeDropdown}}>{{this.closeFilterButtonText}}</BsButton>
+              </div>
+            </div>
+          </BsForm>
+        {{/if}}
+      </div>
+    </BsDropdown>
+  {{/if}}
+{{/let}}
