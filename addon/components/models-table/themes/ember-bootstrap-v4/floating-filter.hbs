@@ -22,11 +22,11 @@ as |FloatingFilter|
         readonly="readonly"
         @type="text"
         @value={{this.filtersHumanReadable}}/>
-      <BsDropdown
+      <this.BsDropdown
         class="input-group-append"
         @closeOnMenuClick={{false}}
         as |dd|>
-        <BsButton
+        <this.BsButton
           class="clearFilterIcon {{@themeInstance.buttonLink}}"
           @type="secondary"
           disabled={{unless @column.filterUsed "disabled"}}
@@ -34,12 +34,12 @@ as |FloatingFilter|
           @onClick={{@clearColumnFilter}}>
           <i class={{@themeInstance.clearFilterIcon}}></i>
           <span class="sr-only">{{@themeInstance.clearFilterMsg}}</span>
-        </BsButton>
+        </this.BsButton>
         <dd.toggle class="btn btn-outline-secondary">
           <i class={{this.filterIcon}}></i>
         </dd.toggle>
         {{#if dd.isOpen}}
-          <BsForm
+          <this.BsForm
             class="float-filter-dropdown-menu dropdown-menu dropdown-menu-right show p-2"
             @formLayout="inline"
             @model={{this}}
@@ -56,20 +56,20 @@ as |FloatingFilter|
               </div>
               <div class="row mb-2">
                 <div class="col">
-                  <BsButton
+                  <this.BsButton
                     @size="sm"
                     @type="secondary"
                     @outline={{true}}
                     @onClick={{this.selectAllListFilterOptions}}>
                     {{this.selectAllListFilterOptionsButtonText}}
-                  </BsButton>
-                  <BsButton
+                  </this.BsButton>
+                  <this.BsButton
                     @size="sm"
                     @type="secondary"
                     @outline={{true}}
                     @onClick={{this.deselectAllListFilterOptions}}>
                     {{this.deselectAllListFilterOptionsButtonText}}
-                  </BsButton>
+                  </this.BsButton>
                 </div>
               </div>
               <div class="list-filter-options-wrapper">
@@ -111,23 +111,23 @@ as |FloatingFilter|
             {{/if}}
             <div class="form-row row mb-2">
               <div class="col-auto">
-                <BsButton
+                <this.BsButton
                   @type="secondary"
                   @outline={{true}}
                   @onClick={{fn this.onUpdateColumnFilter dd.closeDropdown}}>
                   {{this.applyFilterButtonText}}
-                </BsButton>
-                <BsButton
+                </this.BsButton>
+                <this.BsButton
                   @type="secondary"
                   @outline={{true}}
                   @onClick={{dd.closeDropdown}}>
                   {{this.closeFilterButtonText}}
-                </BsButton>
+                </this.BsButton>
               </div>
             </div>
-          </BsForm>
+          </this.BsForm>
         {{/if}}
-      </BsDropdown>
+      </this.BsDropdown>
     </div>
   {{/if}}
 {{/let}}
