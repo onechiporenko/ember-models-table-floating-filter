@@ -1,4 +1,11 @@
-import { clickable, collection, create, property, text, value } from 'ember-cli-page-object';
+import {
+  clickable,
+  collection,
+  create,
+  property,
+  text,
+  value,
+} from 'ember-cli-page-object';
 import { filterDefinition } from './models-table-bs';
 
 export const definition = {
