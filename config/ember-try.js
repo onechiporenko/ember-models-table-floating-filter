@@ -12,6 +12,8 @@ module.exports = async function () {
         npm: {
           devDependencies: {
             'ember-source': '~3.24.3',
+            'ember-cli-page-object':
+              'https://github.com/onechiporenko/ember-cli-page-object.git#master',
           },
         },
       },
