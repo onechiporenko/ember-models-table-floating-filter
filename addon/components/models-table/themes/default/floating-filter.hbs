@@ -57,14 +57,14 @@ as |FloatingFilter|
                 <div>
                   <button
                     type="button"
-                    class={{@themeInstance.buttonDefault}}
+                    class="{{@themeInstance.buttonDefault}} select-all"
                     {{on "click" this.selectAllListFilterOptions}}>
                     <i class={{this.selectIcon}}></i>
                     <span class="emt-sr-only">{{this.selectAllListFilterOptionsButtonText}}</span>
                   </button>
                   <button
                     type="button"
-                    class={{@themeInstance.buttonDefault}}
+                    class="{{@themeInstance.buttonDefault}} deselect-all"
                     {{on "click" this.deselectAllListFilterOptions}}>
                     <i class={{this.deselectIcon}}></i>
                     <span class="emt-sr-only">{{this.deselectAllListFilterOptionsButtonText}}</span>
@@ -106,6 +106,7 @@ as |FloatingFilter|
                 {{/if}}
               {{/if}}
               <button
+                class="apply-filter"
                 type="button"
                 {{on "click" this.onUpdateColumnFilter}}>{{this.applyFilterButtonText}}</button>
             </form>
