@@ -1,5 +1,6 @@
 import Service, { inject as service } from '@ember/service';
 import { ensureSafeComponent } from '@embroider/util';
+import DefaultFloatingFilter from 'ember-models-table-floating-filter/components/models-table/themes/default/floating-filter';
 import PlainHtmlFloatingFilter from 'ember-models-table-floating-filter/components/models-table/themes/plain-html/floating-filter';
 import EmberBootstrapV4FloatingFilter from 'ember-models-table-floating-filter/components/models-table/themes/ember-bootstrap-v4/floating-filter';
 import EmberBootstrapV5FloatingFilter from 'ember-models-table-floating-filter/components/models-table/themes/ember-bootstrap-v5/floating-filter';
@@ -66,6 +67,6 @@ export default class FwService extends Service {
     if (this.isPlainHtml) {
       return ensureSafeComponent(PlainHtmlFloatingFilter, this);
     }
-    return '';
+    return ensureSafeComponent(DefaultFloatingFilter, this);
   }
 }

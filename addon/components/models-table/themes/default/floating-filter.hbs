@@ -12,5 +12,107 @@ as |FloatingFilter|
 }}
   {{#if (has-block)}}
     {{yield FloatingFilter}}
+  {{else}}
+    <div
+      {{did-insert this.updateFilterTypeOnInit}}
+      class="filter-wrapper">
+      <Input
+        aria-label=""
+        class="{{@themeInstance.input}}"
+        readonly="readonly"
+        @type="text"
+        @value={{this.filtersHumanReadable}}/>
+      <button
+        type="button"
+        class="clearFilterIcon {{@themeInstance.buttonLink}}"
+        disabled={{unless @column.filterUsed "disabled"}}
+        {{on "click" @clearColumnFilter}}>
+        <i class={{@themeInstance.clearFilterIcon}}></i>
+        <span class="emt-sr-only">{{@themeInstance.clearFilterMsg}}</span>
+      </button>
+      <div
+        class="dropdown right"
+        {{on "mouseenter" this.onHoverDropdown}}
+        {{on "mouseleave" this.onHideDropdown}}>
+        <button
+          type="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          {{on "click" this.onToggleDropdown}}
+          class="{{@themeInstance.buttonDefault}} floating-filter-dropdown-toggle">
+          <i class={{this.filterIcon}}></i>
+        </button>
+        {{#if this.dropdownShown}}
+          <div data-role="dropdown" class="float-filter-dropdown-menu">
+            <form>
+              {{#if this.isListFilterType}}
+                <div>
+                  <Input
+                    aria-label=""
+                    class="{{@themeInstance.input}} filter-list-options"
+                    @type="text"
+                    @value={{this.filterForListFilterOptions}}/>
+                </div>
+                <div>
+                  <button
+                    type="button"
+                    class="{{@themeInstance.buttonDefault}} select-all"
+                    {{on "click" this.selectAllListFilterOptions}}>
+                    <i class={{this.selectIcon}}></i>
+                    <span class="emt-sr-only">{{this.selectAllListFilterOptionsButtonText}}</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="{{@themeInstance.buttonDefault}} deselect-all"
+                    {{on "click" this.deselectAllListFilterOptions}}>
+                    <i class={{this.deselectIcon}}></i>
+                    <span class="emt-sr-only">{{this.deselectAllListFilterOptionsButtonText}}</span>
+                  </button>
+                </div>
+                <div class="list-filter-options-wrapper">
+                  {{#each this.filteredListFilterOptions as |option|}}
+                    <a
+                      href="#"
+                      {{on "click" (fn this.updateFilterListItem option)}}>
+                      <i class={{if option.checked this.selectIcon this.deselectIcon}}></i>
+                      {{option.label}}
+                    </a>
+                  {{/each}}
+                </div>
+              {{else}}
+                <div class="filter-type">
+                  <FloatingFilter.Select
+                    @changeValue={{this.updateFilter}}/>
+                </div>
+                {{#if this.showFirstArgInput}}
+                  <div>
+                    <Input
+                      aria-label="First Arg"
+                      class="{{@themeInstance.input}} first-arg"
+                      @type={{this.argsInputType}}
+                      @value={{this.filterArgsFirst}} />
+                  </div>
+                {{/if}}
+                {{#if this.showSecondArgInput}}
+                  <div> - </div>
+                  <div>
+                    <Input
+                      aria-label="Second Arg"
+                      class="{{@themeInstance.input}} second-arg"
+                      @type={{this.argsInputType}}
+                      @value={{this.filterArgsSecond}} />
+                  </div>
+                {{/if}}
+              {{/if}}
+              <button
+                class="apply-filter"
+                type="button"
+                {{on "click" this.onUpdateColumnFilter}}>{{this.applyFilterButtonText}}</button>
+            </form>
+          </div>
+        {{/if}}
+      </div>
+    </div>
   {{/if}}
 {{/let}}
