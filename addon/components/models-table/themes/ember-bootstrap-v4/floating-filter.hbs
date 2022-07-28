@@ -15,7 +15,7 @@ as |FloatingFilter|
   {{else}}
     <div
       {{did-insert this.updateFilterTypeOnInit}}
-      class="input-group">
+      class="filter-wrapper input-group">
       <Input
         aria-label=""
         class="{{@themeInstance.input}}"
@@ -35,7 +35,7 @@ as |FloatingFilter|
           <i class={{@themeInstance.clearFilterIcon}}></i>
           <span class="sr-only">{{@themeInstance.clearFilterMsg}}</span>
         </this.BsButton>
-        <dd.toggle class="btn btn-outline-secondary">
+        <dd.toggle class="btn btn-outline-secondary floating-filter-dropdown-toggle">
           <i class={{this.filterIcon}}></i>
         </dd.toggle>
         {{#if dd.isOpen}}
@@ -49,7 +49,7 @@ as |FloatingFilter|
                 <div class="col">
                   <Input
                     aria-label=""
-                    class="{{@themeInstance.input}}"
+                    class="{{@themeInstance.input}} filter-list-options"
                     @type="text"
                     @value={{this.filterForListFilterOptions}} />
                 </div>
@@ -57,6 +57,7 @@ as |FloatingFilter|
               <div class="row mb-2">
                 <div class="col">
                   <this.BsButton
+                    class="select-all"
                     @size="sm"
                     @type="secondary"
                     @outline={{true}}
@@ -64,6 +65,7 @@ as |FloatingFilter|
                     {{this.selectAllListFilterOptionsButtonText}}
                   </this.BsButton>
                   <this.BsButton
+                    class="deselect-all"
                     @size="sm"
                     @type="secondary"
                     @outline={{true}}
@@ -83,8 +85,9 @@ as |FloatingFilter|
               </div>
             {{else}}
               <div class="form-row mb-2">
-                <div class="col-auto">
-                  <FloatingFilter.Select @changeValue={{this.updateFilter}}/>
+                <div class="col-auto filter-type">
+                  <FloatingFilter.Select
+                    @changeValue={{this.updateFilter}}/>
                 </div>
               </div>
               <div class="form-row g-2 mb-2">
@@ -92,7 +95,7 @@ as |FloatingFilter|
                   <div class="col-auto">
                     <Input
                       aria-label="First Arg"
-                      class="{{@themeInstance.input}}"
+                      class="{{@themeInstance.input}} first-arg"
                       @type={{this.argsInputType}}
                       @value={{this.filterArgsFirst}} />
                   </div>
@@ -102,7 +105,7 @@ as |FloatingFilter|
                   <div class="col-auto">
                     <Input
                       aria-label="Second Arg"
-                      class="{{@themeInstance.input}}"
+                      class="{{@themeInstance.input}} second-arg"
                       @type={{this.argsInputType}}
                       @value={{this.filterArgsSecond}} />
                   </div>
@@ -112,6 +115,7 @@ as |FloatingFilter|
             <div class="form-row row mb-2">
               <div class="col-auto">
                 <this.BsButton
+                  class="{{@themeInstance.buttonDefault}} apply-filter"
                   @type="secondary"
                   @outline={{true}}
                   @onClick={{fn this.onUpdateColumnFilter dd.closeDropdown}}>

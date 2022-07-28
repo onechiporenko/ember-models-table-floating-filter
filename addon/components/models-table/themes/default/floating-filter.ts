@@ -2,6 +2,8 @@ import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { isBlank, isNone } from '@ember/utils';
+import { EmberRunTimer } from '@ember/runloop/types';
+import { cancel, debounce } from '@ember/runloop';
 import { RowFilteringCellArgs } from 'ember-models-table/components/models-table/themes/default/row-filtering-cell';
 import {
   ModelsTableDataItem,
@@ -163,6 +165,12 @@ export default class FloatingFilter extends Component<FloatingFilterArgs> {
   @tracked
   protected filterForListFilterOptions = '';
 
+  @tracked
+  dropdownShown = false;
+
+  @tracked
+  declare timer: EmberRunTimer;
+
   protected get filterIcon(): string {
     return this.getThemeKeyValue(
       'floatingFilter',
@@ -323,10 +331,10 @@ export default class FloatingFilter extends Component<FloatingFilterArgs> {
         return `- ${args[0]}`;
       }
       case FilterType.BLANK: {
-        return 'Blank';
+        return '""';
       }
       case FilterType.NOT_BLANK: {
-        return '!Blank';
+        return '!""';
       }
       case FilterType.LIST: {
         return `Any of (${args[0].length}) ${args[0].join(', ')}`;
@@ -392,6 +400,26 @@ export default class FloatingFilter extends Component<FloatingFilterArgs> {
     return (this.args.themeInstance[themeKey] as string) ?? defaultValue;
   }
 
+  protected hideDropdown(): void {
+    this.dropdownShown = false;
+  }
+
+  @action
+  protected onToggleDropdown(): void {
+    this.dropdownShown = !this.dropdownShown;
+    cancel(this.timer);
+  }
+
+  @action
+  protected onHoverDropdown(): void {
+    cancel(this.timer);
+  }
+
+  @action
+  protected onHideDropdown(): void {
+    this.timer = debounce(this, this.hideDropdown, 500, false);
+  }
+
   @action
   protected updateFilterListItem(
     opt: FloatingFilterListOption,
@@ -443,6 +471,7 @@ export default class FloatingFilter extends Component<FloatingFilterArgs> {
     if (typeof clb === 'function') {
       clb();
     }
+    this.hideDropdown();
   }
 
   @action

@@ -32,11 +32,12 @@ as |FloatingFilter|
       </button>
       <div
         class="dropdown right"
-        {{on "mouseenter" this.onEnter}}
-        {{on "mouseleave" this.onLeave}}>
+        {{on "mouseenter" this.onHoverDropdown}}
+        {{on "mouseleave" this.onHideDropdown}}>
         <button
           type="button"
-          class="{{@themeInstance.buttonDefault}}">
+          {{on "click" this.onToggleDropdown}}
+          class="{{@themeInstance.buttonDefault}} floating-filter-dropdown-toggle">
           <i class={{this.filterIcon}}></i>
         </button>
         {{#if this.dropdownShown}}
@@ -46,21 +47,21 @@ as |FloatingFilter|
                 <div>
                   <Input
                     aria-label=""
-                    class="{{@themeInstance.input}}"
+                    class="{{@themeInstance.input}} filter-list-options"
                     @type="text"
                     @value={{this.filterForListFilterOptions}}/>
                 </div>
                 <div>
                   <button
                     type="button"
-                    class={{@themeInstance.buttonDefault}}
+                    class="{{@themeInstance.buttonDefault}} select-all"
                     {{on "click" this.selectAllListFilterOptions}}>
                     <i class={{this.selectIcon}}></i>
                     <span class="emt-sr-only">{{this.selectAllListFilterOptionsButtonText}}</span>
                   </button>
                   <button
                     type="button"
-                    class={{@themeInstance.buttonDefault}}
+                    class="{{@themeInstance.buttonDefault}} deselect-all"
                     {{on "click" this.deselectAllListFilterOptions}}>
                     <i class={{this.deselectIcon}}></i>
                     <span class="emt-sr-only">{{this.deselectAllListFilterOptionsButtonText}}</span>
@@ -77,14 +78,15 @@ as |FloatingFilter|
                   {{/each}}
                 </div>
               {{else}}
-                <div>
-                  <FloatingFilter.Select @changeValue={{this.updateFilter}}/>
+                <div class="filter-type">
+                  <FloatingFilter.Select
+                    @changeValue={{this.updateFilter}}/>
                 </div>
                 {{#if this.showFirstArgInput}}
                   <div>
                     <Input
                       aria-label="First Arg"
-                      class="{{@themeInstance.input}}"
+                      class="{{@themeInstance.input}} first-arg"
                       @type={{this.argsInputType}}
                       @value={{this.filterArgsFirst}} />
                   </div>
@@ -94,7 +96,7 @@ as |FloatingFilter|
                   <div>
                     <Input
                       aria-label="Second Arg"
-                      class="{{@themeInstance.input}}"
+                      class="{{@themeInstance.input}} second-arg"
                       @type={{this.argsInputType}}
                       @value={{this.filterArgsSecond}} />
                   </div>
@@ -102,6 +104,7 @@ as |FloatingFilter|
               {{/if}}
               <button
                 type="button"
+                class="{{@themeInstance.buttonDefault}} apply-filter"
                 {{on "click" this.onUpdateColumnFilter}}>{{this.applyFilterButtonText}}</button>
             </form>
           </div>

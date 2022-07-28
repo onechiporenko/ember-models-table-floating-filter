@@ -10,35 +10,37 @@ import {
 export default class ExamplesSimpleController extends Controller {
   @service() fw;
 
-  model = [
-    { a: 1, b: 1, c: 'a', d: 'aaaaaaaaaaaaaaaaaaaaaa' },
-    { a: 2, b: 2, c: 'b', d: 'b' },
-    { a: 3, b: 3, c: 'c', d: 'c' },
-    { a: 4, b: 4, c: 'd', d: 'd' },
-    { a: 5, b: 5, c: 'e', d: 'e' },
-    { a: 6, b: 6, c: 'f', d: 'f' },
-    { a: 7, b: 7, c: 'g', d: 'g' },
-    { a: 8, b: 8, c: 'h', d: 'h' },
-  ];
+  get model() {
+    const ret = [];
+    for (let i = 0; i < 30; i++) {
+      const charCode = 65 + (i % 15);
+      ret.push({
+        id: i,
+        chars:
+          String.fromCharCode(charCode) + String.fromCharCode(charCode + 1),
+      });
+    }
+    return ret;
+  }
 
   columns = [
     {
-      propertyName: 'a',
-      title: 'A',
+      propertyName: 'id',
+      title: 'ID',
       filterFunction: columnNumberFloatingFilterFunction,
       floatingFilterType: FloatingFilterType.NUMBER,
       componentForFilterCell: this.fw.floatingFilterComponent,
     },
-    { propertyName: 'b', title: 'B' },
+    { propertyName: 'id', title: 'ID' },
     {
-      propertyName: 'c',
+      propertyName: 'chars',
       title: 'C',
       filterFunction: columnStringFloatingFilterFunction,
       floatingFilterType: FloatingFilterType.STRING,
       componentForFilterCell: this.fw.floatingFilterComponent,
     },
     {
-      propertyName: 'd',
+      propertyName: 'chars',
       title: 'D',
       filterWithSelect: true,
       filterFunction: columnListFloatingFilterFunction,
