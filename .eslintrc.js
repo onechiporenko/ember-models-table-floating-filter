@@ -1,9 +1,6 @@
 'use strict';
 
 module.exports = {
-  globals: {
-    server: true,
-  },
   root: true,
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -43,6 +40,12 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': [1, { ignoreRestArgs: true }],
   },
   overrides: [
+    {
+      files: ['./addon-test-support/**', './tests/{integration,unit}/**'],
+      rules: {
+        'ember/no-array-prototype-extensions': 0,
+      },
+    },
     {
       // enable the rule specifically for TypeScript files
       files: ['*.ts', '*.tsx'],
