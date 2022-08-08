@@ -79,20 +79,32 @@ module('Integration | Component | floating-filter', function (hooks) {
       {
         propertyName: 'id',
         filterFunction: columnNumberFloatingFilterFunction,
-        floatingFilterType: FloatingFilterType.NUMBER,
+        'emt-addons': {
+          floatingFilter: {
+            floatingFilterType: FloatingFilterType.NUMBER,
+          },
+        },
         componentForFilterCell: fw.floatingFilterComponent,
       },
       {
         propertyName: 'chars',
         filterFunction: columnStringFloatingFilterFunction,
-        floatingFilterType: FloatingFilterType.STRING,
+        'emt-addons': {
+          floatingFilter: {
+            floatingFilterType: FloatingFilterType.STRING,
+          },
+        },
         componentForFilterCell: fw.floatingFilterComponent,
       },
       {
         propertyName: 'chars',
         filterFunction: columnListFloatingFilterFunction,
         filterWithSelect: true,
-        floatingFilterType: FloatingFilterType.LIST,
+        'emt-addons': {
+          floatingFilter: {
+            floatingFilterType: FloatingFilterType.LIST,
+          },
+        },
         componentForFilterCell: fw.floatingFilterComponent,
       },
     ];

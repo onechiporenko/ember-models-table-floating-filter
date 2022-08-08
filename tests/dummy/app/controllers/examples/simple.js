@@ -28,15 +28,23 @@ export default class ExamplesSimpleController extends Controller {
       propertyName: 'id',
       title: 'ID',
       filterFunction: columnNumberFloatingFilterFunction,
-      floatingFilterType: FloatingFilterType.NUMBER,
       componentForFilterCell: this.fw.floatingFilterComponent,
+      'emt-addons': {
+        floatingFilter: {
+          floatingFilterType: FloatingFilterType.NUMBER,
+        },
+      },
     },
     { propertyName: 'id', title: 'ID' },
     {
       propertyName: 'chars',
       title: 'C',
       filterFunction: columnStringFloatingFilterFunction,
-      floatingFilterType: FloatingFilterType.STRING,
+      'emt-addons': {
+        floatingFilter: {
+          floatingFilterType: FloatingFilterType.STRING,
+        },
+      },
       componentForFilterCell: this.fw.floatingFilterComponent,
     },
     {
@@ -44,7 +52,11 @@ export default class ExamplesSimpleController extends Controller {
       title: 'D',
       filterWithSelect: true,
       filterFunction: columnListFloatingFilterFunction,
-      floatingFilterType: FloatingFilterType.LIST,
+      'emt-addons': {
+        floatingFilter: {
+          floatingFilterType: FloatingFilterType.LIST,
+        },
+      },
       componentForFilterCell: this.fw.floatingFilterComponent,
     },
   ];

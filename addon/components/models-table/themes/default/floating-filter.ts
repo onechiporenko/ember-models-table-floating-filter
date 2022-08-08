@@ -49,6 +49,10 @@ export class ListFilterOption {
   @tracked declare checked: boolean;
 }
 
+export interface FloatingFilterOptions {
+  floatingFilterType: FloatingFilterType;
+}
+
 export const columnListFloatingFilterFunction = (
   cellValue: string,
   floatingFilterValue: string,
@@ -180,17 +184,11 @@ export default class FloatingFilter extends Component<FloatingFilterArgs> {
   }
 
   protected get filters(): SelectOption[] {
-    return this.args.column.originalDefinition['floatingFilterType'] ===
-      FloatingFilterType.NUMBER
-      ? this.numberFilters
-      : this.stringFilters;
+    return this.isNumberFilterType ? this.numberFilters : this.stringFilters;
   }
 
   protected get argsInputType(): string {
-    return this.args.column.originalDefinition['floatingFilterType'] ===
-      FloatingFilterType.NUMBER
-      ? 'number'
-      : 'string';
+    return this.isNumberFilterType ? 'number' : 'string';
   }
 
   protected get showFirstArgInput(): boolean {
@@ -343,10 +341,21 @@ export default class FloatingFilter extends Component<FloatingFilterArgs> {
     return '';
   }
 
+  protected get floatingFilterOptions(): FloatingFilterOptions {
+    return (this.args.column.originalDefinition['emt-addons']?.floatingFilter ??
+      {}) as FloatingFilterOptions;
+  }
+
+  protected get isNumberFilterType(): boolean {
+    return (
+      this.floatingFilterOptions.floatingFilterType ===
+      FloatingFilterType.NUMBER
+    );
+  }
+
   protected get isListFilterType(): boolean {
     return (
-      this.args.column.originalDefinition['floatingFilterType'] ===
-      FloatingFilterType.LIST
+      this.floatingFilterOptions.floatingFilterType === FloatingFilterType.LIST
     );
   }
 
