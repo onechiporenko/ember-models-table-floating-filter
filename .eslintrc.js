@@ -54,6 +54,13 @@ module.exports = {
         '@typescript-eslint/no-var-requires': 2,
       },
     },
+    // node tests
+    {
+      files: ['./node-tests/**'],
+      env: {
+        mocha: true,
+      },
+    },
     // node files
     {
       files: [
@@ -66,6 +73,7 @@ module.exports = {
         './blueprints/*/index.js',
         './config/**/*.js',
         './tests/dummy/config/**/*.js',
+        './node-tests/**/*.js',
       ],
       excludedFiles: [
         'addon/**',
