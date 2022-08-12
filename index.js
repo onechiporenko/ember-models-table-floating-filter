@@ -3,6 +3,8 @@
 const path = require('path');
 const defaultOptions = {
   includePlainHtmlThemeCss: false,
+  includeBs4ThemeCss: false,
+  includeBs5ThemeCss: false,
 };
 
 module.exports = {
@@ -19,6 +21,12 @@ module.exports = {
     let vendorPath = path.join('vendor', 'ember-models-table-floating-filter');
     if (options.includePlainHtmlThemeCss) {
       app.import(path.join(vendorPath, 'plain-html.css'));
+    }
+    if (options.includeBs4ThemeCss) {
+      app.import(path.join(vendorPath, 'bs4.css'));
+    }
+    if (options.includeBs5ThemeCss) {
+      app.import(path.join(vendorPath, 'bs5.css'));
     }
   },
 };

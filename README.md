@@ -12,3 +12,7 @@
 ```bash
 ember install ember-models-table-floating-filter
 ```
+
+## Usage
+
+> Compatible with `ember-models-table@4.x`

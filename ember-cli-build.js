@@ -47,6 +47,12 @@ module.exports = function (defaults) {
   if (process.env.EMT_UI === 'plain-html') {
     app.import('vendor/ember-models-table-floating-filter/plain-html.css');
   }
+  if (process.env.EMT_UI === 'bs4') {
+    app.import('vendor/ember-models-table-floating-filter/bs4.css');
+  }
+  if (process.env.EMT_UI === 'bs5') {
+    app.import('vendor/ember-models-table-floating-filter/bs5.css');
+  }
   const { maybeEmbroider } = require('@embroider/test-setup');
   return maybeEmbroider(app, {
     skipBabel: [
