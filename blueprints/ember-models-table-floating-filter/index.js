@@ -19,6 +19,18 @@ module.exports = {
       default: false,
       aliases: ['iphtc'],
     },
+    {
+      name: 'include-bs4-theme-css',
+      type: Boolean,
+      default: false,
+      aliases: ['ibs4tc'],
+    },
+    {
+      name: 'include-bs5-theme-css',
+      type: Boolean,
+      default: false,
+      aliases: ['ibs5tc'],
+    },
   ],
 
   normalizeEntityName: function () {
@@ -32,6 +44,12 @@ module.exports = {
     )
       ? options.includePlainHtmlThemeCss
       : false;
+    this.includeBs4ThemeCss = hasOwnProperty.call(options, 'includeBs4ThemeCss')
+      ? options.includeBs4ThemeCss
+      : true;
+    this.includeBs5ThemeCss = hasOwnProperty.call(options, 'includeBs5ThemeCss')
+      ? options.includeBs5ThemeCss
+      : true;
   },
 
   afterInstall() {
@@ -45,6 +63,12 @@ module.exports = {
 
     if (this.includePlainHtmlThemeCss) {
       settings.includePlainHtmlThemeCss = this.includePlainHtmlThemeCss;
+    }
+    if (this.includeBs4ThemeCss) {
+      settings.includeBs4ThemeCss = this.includeBs4ThemeCss;
+    }
+    if (this.includeBs5ThemeCss) {
+      settings.includeBs5ThemeCss = this.includeBs5ThemeCss;
     }
 
     if (!fs.existsSync(file)) {
