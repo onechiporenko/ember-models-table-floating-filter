@@ -120,7 +120,7 @@ jobs:
           cache: yarn
       - name: Install dependencies
         run: yarn install --frozen-lockfile
-      - name: Generage Report
+      - name: Generate Report
         run: |
           chmod +x coverage.sh
           ./coverage.sh default
