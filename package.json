@@ -1,6 +1,6 @@
 {
   "name": "ember-models-table-floating-filter",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Custom filters for ember-models-table",
   "keywords": [
     "ember-addon"
