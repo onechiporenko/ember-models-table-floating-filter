@@ -1,6 +1,7 @@
 .float-filter-dropdown-menu .checkbox-wrapper {
   margin-bottom: 0;
 }
+
 .float-filter-dropdown-menu .list-filter-options-wrapper {
   max-height: 160px;
   overflow-y: scroll;
