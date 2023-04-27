@@ -79,7 +79,6 @@ jobs:
           - ember-release
           - ember-beta
           - ember-canary
-          - ember-classic
           - ember-lts-3.24-with-plain-html
           - ember-lts-3.28-with-plain-html
           - ember-default-with-plain-html
