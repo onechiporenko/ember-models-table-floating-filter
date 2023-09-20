@@ -19,9 +19,9 @@ export const definition = {
         {
           content: text(),
           click: clickable('input'),
-        }
+        },
       ),
-    })
+    }),
   ),
 };
 

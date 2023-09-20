@@ -8,14 +8,6 @@ module.exports = async function () {
     useYarn: true,
     scenarios: [
       {
-        name: 'ember-lts-3.28',
-        npm: {
-          devDependencies: {
-            'ember-source': '~3.28.0',
-          },
-        },
-      },
-      {
         name: 'ember-lts-4.4',
         npm: {
           devDependencies: {
@@ -75,31 +67,6 @@ module.exports = async function () {
         },
       },
       {
-        name: 'ember-lts-3.24-with-plain-html',
-        env: {
-          EMT_UI: 'plain-html',
-        },
-        npm: {
-          devDependencies: {
-            'ember-source': '~3.24.3',
-            'ember-cli-page-object':
-              'https://github.com/onechiporenko/ember-cli-page-object.git#master',
-            'ember-qunit': '~6.0.0',
-          },
-        },
-      },
-      {
-        name: 'ember-lts-3.28-with-plain-html',
-        env: {
-          EMT_UI: 'plain-html',
-        },
-        npm: {
-          devDependencies: {
-            'ember-source': '~3.28.0',
-          },
-        },
-      },
-      {
         name: 'ember-default-with-ember-bootstrap-v4',
         env: {
           EMT_UI: 'bs4',
@@ -127,37 +94,6 @@ module.exports = async function () {
         },
       },
       {
-        name: 'ember-lts-3.24-with-ember-bootstrap-v4',
-        env: {
-          EMT_UI: 'bs4',
-        },
-        npm: {
-          devDependencies: {
-            'bootstrap-sass': '3.4.1',
-            bootstrap: '4.4.1',
-            'ember-bootstrap': '^5.0.0',
-            'ember-source': '~3.24.3',
-            'ember-cli-page-object':
-              'https://github.com/onechiporenko/ember-cli-page-object.git#master',
-            'ember-qunit': '~6.0.0',
-          },
-        },
-      },
-      {
-        name: 'ember-lts-3.28-with-ember-bootstrap-v4',
-        env: {
-          EMT_UI: 'bs4',
-        },
-        npm: {
-          devDependencies: {
-            'bootstrap-sass': '3.4.1',
-            bootstrap: '4.4.1',
-            'ember-bootstrap': '^5.0.0',
-            'ember-source': '~3.28.0',
-          },
-        },
-      },
-      {
         name: 'ember-default-with-ember-bootstrap-v5',
         env: {
           EMT_UI: 'bs5',
@@ -167,37 +103,6 @@ module.exports = async function () {
             'bootstrap-sass': '3.4.1',
             bootstrap: '5.1.3',
             'ember-bootstrap': '^5.0.0',
-          },
-        },
-      },
-      {
-        name: 'ember-lts-3.24-with-ember-bootstrap-v5',
-        env: {
-          EMT_UI: 'bs5',
-        },
-        npm: {
-          devDependencies: {
-            'bootstrap-sass': '3.4.1',
-            bootstrap: '5.1.3',
-            'ember-bootstrap': '^5.0.0',
-            'ember-source': '~3.24.3',
-            'ember-cli-page-object':
-              'https://github.com/onechiporenko/ember-cli-page-object.git#master',
-            'ember-qunit': '~6.0.0',
-          },
-        },
-      },
-      {
-        name: 'ember-lts-3.28-with-ember-bootstrap-v5',
-        env: {
-          EMT_UI: 'bs5',
-        },
-        npm: {
-          devDependencies: {
-            'bootstrap-sass': '3.4.1',
-            bootstrap: '5.1.3',
-            'ember-bootstrap': '^5.0.0',
-            'ember-source': '~3.28.0',
           },
         },
       },
