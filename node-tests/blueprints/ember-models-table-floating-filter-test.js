@@ -17,11 +17,11 @@ describe('Acceptance: ember generate ember-models-table-floating-filter (ember-c
     return emberNew().then(() =>
       emberGenerate(args, (file) => {
         expect(file('ember-cli-build.js')).to.not.contain(
-          'includePlainHtmlThemeCss'
+          'includePlainHtmlThemeCss',
         );
         expect(file('ember-cli-build.js')).to.not.contain('includeBs4ThemeCss');
         expect(file('ember-cli-build.js')).to.not.contain('includeBs5ThemeCss');
-      })
+      }),
     );
   });
 
@@ -31,11 +31,11 @@ describe('Acceptance: ember generate ember-models-table-floating-filter (ember-c
     return emberNew().then(() =>
       emberGenerate(args, (file) => {
         expect(file('ember-cli-build.js')).to.contain(
-          'includePlainHtmlThemeCss: true'
+          'includePlainHtmlThemeCss: true',
         );
         expect(file('ember-cli-build.js')).to.not.contain('includeBs4ThemeCss');
         expect(file('ember-cli-build.js')).to.not.contain('includeBs5ThemeCss');
-      })
+      }),
     );
   });
 
@@ -48,11 +48,11 @@ describe('Acceptance: ember generate ember-models-table-floating-filter (ember-c
     return emberNew().then(() =>
       emberGenerate(args, (file) => {
         expect(file('ember-cli-build.js')).to.contain(
-          'includePlainHtmlThemeCss: true'
+          'includePlainHtmlThemeCss: true',
         );
         expect(file('ember-cli-build.js')).to.not.contain('includeBs4ThemeCss');
         expect(file('ember-cli-build.js')).to.not.contain('includeBs5ThemeCss');
-      })
+      }),
     );
   });
 
@@ -62,13 +62,13 @@ describe('Acceptance: ember generate ember-models-table-floating-filter (ember-c
     return emberNew().then(() =>
       emberGenerate(args, (file) => {
         expect(file('ember-cli-build.js')).to.not.contain(
-          'includePlainHtmlThemeCss'
+          'includePlainHtmlThemeCss',
         );
         expect(file('ember-cli-build.js')).to.contain(
-          'includeBs4ThemeCss: true'
+          'includeBs4ThemeCss: true',
         );
         expect(file('ember-cli-build.js')).to.not.contain('includeBs5ThemeCss');
-      })
+      }),
     );
   });
 
@@ -81,13 +81,13 @@ describe('Acceptance: ember generate ember-models-table-floating-filter (ember-c
     return emberNew().then(() =>
       emberGenerate(args, (file) => {
         expect(file('ember-cli-build.js')).to.not.contain(
-          'includePlainHtmlThemeCss'
+          'includePlainHtmlThemeCss',
         );
         expect(file('ember-cli-build.js')).to.contain(
-          'includeBs4ThemeCss: true'
+          'includeBs4ThemeCss: true',
         );
         expect(file('ember-cli-build.js')).to.not.contain('includeBs5ThemeCss');
-      })
+      }),
     );
   });
 
@@ -97,13 +97,13 @@ describe('Acceptance: ember generate ember-models-table-floating-filter (ember-c
     return emberNew().then(() =>
       emberGenerate(args, (file) => {
         expect(file('ember-cli-build.js')).to.not.contain(
-          'includePlainHtmlThemeCss'
+          'includePlainHtmlThemeCss',
         );
         expect(file('ember-cli-build.js')).to.contain(
-          'includeBs5ThemeCss: true'
+          'includeBs5ThemeCss: true',
         );
         expect(file('ember-cli-build.js')).to.not.contain('includeBs4ThemeCss');
-      })
+      }),
     );
   });
 
@@ -116,13 +116,13 @@ describe('Acceptance: ember generate ember-models-table-floating-filter (ember-c
     return emberNew().then(() =>
       emberGenerate(args, (file) => {
         expect(file('ember-cli-build.js')).to.not.contain(
-          'includePlainHtmlThemeCss'
+          'includePlainHtmlThemeCss',
         );
         expect(file('ember-cli-build.js')).to.contain(
-          'includeBs5ThemeCss: true'
+          'includeBs5ThemeCss: true',
         );
         expect(file('ember-cli-build.js')).to.not.contain('includeBs4ThemeCss');
-      })
+      }),
     );
   });
 });

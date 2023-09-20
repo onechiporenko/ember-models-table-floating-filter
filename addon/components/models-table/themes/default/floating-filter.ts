@@ -4,11 +4,9 @@ import { action } from '@ember/object';
 import { isBlank, isNone } from '@ember/utils';
 import { EmberRunTimer } from '@ember/runloop/types';
 import { cancel, debounce } from '@ember/runloop';
-import { RowFilteringCellArgs } from 'ember-models-table/components/models-table/themes/default/row-filtering-cell';
-import {
-  ModelsTableDataItem,
-  SelectOption,
-} from 'ember-models-table/components/models-table';
+import { RowFilteringCellArgs } from 'ember-models-table/interfaces/components/models-table/themes/default/row-filtering-cell-args.interface';
+import { SelectOption } from 'ember-models-table/interfaces/select-option.interface';
+import { ModelsTableDataItem } from 'ember-models-table/types/models-table-data-item.type';
 
 export interface FloatingFilterArgs extends RowFilteringCellArgs {
   clearColumnFilter: (e: Event) => boolean;
@@ -56,7 +54,7 @@ export interface FloatingFilterOptions {
 export const columnListFloatingFilterFunction = (
   cellValue: string,
   floatingFilterValue: string,
-  row: ModelsTableDataItem
+  row: ModelsTableDataItem,
 ): boolean => {
   floatingFilterValue = floatingFilterValue || '{}';
   const { args } = JSON.parse(floatingFilterValue);
@@ -67,7 +65,7 @@ export const columnListFloatingFilterFunction = (
 export const columnNumberFloatingFilterFunction = (
   cellValue: string,
   floatingFilterValue: string,
-  row: ModelsTableDataItem
+  row: ModelsTableDataItem,
 ): boolean => {
   floatingFilterValue = floatingFilterValue || '{}';
   const { type, args } = JSON.parse(floatingFilterValue);
@@ -103,7 +101,7 @@ export const columnNumberFloatingFilterFunction = (
 export const columnStringFloatingFilterFunction = (
   cellValue: string,
   floatingFilterValue: string,
-  row: ModelsTableDataItem
+  row: ModelsTableDataItem,
 ): boolean => {
   floatingFilterValue = floatingFilterValue || '{}';
   const { type, args } = JSON.parse(floatingFilterValue);
@@ -179,7 +177,7 @@ export default class FloatingFilter extends Component<FloatingFilterArgs> {
     return this.getThemeKeyValue(
       'floatingFilter',
       'Icon',
-      'fa fa-fw fa-filter'
+      'fa fa-fw fa-filter',
     );
   }
 
@@ -252,7 +250,7 @@ export default class FloatingFilter extends Component<FloatingFilterArgs> {
       {
         label: this.getFilterLabel(
           FilterType.NOT_STARTS_WITH,
-          'Not starts with'
+          'Not starts with',
         ),
         value: FilterType.NOT_STARTS_WITH,
       },
@@ -364,7 +362,7 @@ export default class FloatingFilter extends Component<FloatingFilterArgs> {
       return this.listFilterOptions;
     }
     return this.listFilterOptions.filter((opt) =>
-      `${opt.value}`.includes(this.filterForListFilterOptions)
+      `${opt.value}`.includes(this.filterForListFilterOptions),
     );
   }
 
@@ -372,7 +370,7 @@ export default class FloatingFilter extends Component<FloatingFilterArgs> {
     return this.getThemeKeyValue(
       'SelectAll',
       'Icon',
-      'fa fa-fw fa-check-square-o'
+      'fa fa-fw fa-check-square-o',
     );
   }
 
@@ -403,7 +401,7 @@ export default class FloatingFilter extends Component<FloatingFilterArgs> {
   protected getThemeKeyValue(
     key: string,
     type: string,
-    defaultValue: string
+    defaultValue: string,
   ): string {
     const themeKey = `floatingFilter${key}${type}`;
     return (this.args.themeInstance[themeKey] as string) ?? defaultValue;
@@ -432,7 +430,7 @@ export default class FloatingFilter extends Component<FloatingFilterArgs> {
   @action
   protected updateFilterListItem(
     opt: FloatingFilterListOption,
-    e: Event
+    e: Event,
   ): boolean {
     opt.checked = !opt.checked;
     e?.stopPropagation?.();
@@ -463,7 +461,7 @@ export default class FloatingFilter extends Component<FloatingFilterArgs> {
       args.push(
         this.listFilterOptions
           .filter((opt) => opt.checked)
-          .map((opt) => opt.value)
+          .map((opt) => opt.value),
       );
     }
     if (this.showFirstArgInput) {

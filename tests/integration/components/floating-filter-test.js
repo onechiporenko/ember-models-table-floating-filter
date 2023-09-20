@@ -112,7 +112,6 @@ module('Integration | Component | floating-filter', function (hooks) {
   });
 
   test('default render', async function (assert) {
-    assert.expect(12);
     await render(hbs`<ModelsTable
       @themeInstance={{this.themeInstance}}
       @columns={{this.columns}}
@@ -122,25 +121,24 @@ module('Integration | Component | floating-filter', function (hooks) {
       const floatingFilter = filters.objectAt(index);
       assert.true(
         floatingFilter.filterInput,
-        `readonly-input for ${filterType}-filter is shown`
+        `readonly-input for ${filterType}-filter is shown`,
       );
       assert.true(
         floatingFilter.clearFilterExists,
-        `clear-filter button for ${filterType}-filter is shown`
+        `clear-filter button for ${filterType}-filter is shown`,
       );
       assert.true(
         floatingFilter.clearFilterDisabled,
-        `clear-filter button for ${filterType}-filter is disabled`
+        `clear-filter button for ${filterType}-filter is disabled`,
       );
       assert.true(
         floatingFilter.dropdownToggleExists,
-        `dropdown-toggle button for ${filterType}-filter is shown`
+        `dropdown-toggle button for ${filterType}-filter is shown`,
       );
     });
   });
 
   test('dropdown content is shown on click dropdown-toggle', async function (assert) {
-    assert.expect(6);
     await render(hbs`<ModelsTable
       @themeInstance={{this.themeInstance}}
       @columns={{this.columns}}
@@ -150,12 +148,12 @@ module('Integration | Component | floating-filter', function (hooks) {
       const floatingFilter = filters.objectAt(index);
       assert.false(
         floatingFilter.dropdownExists,
-        `dropdown-content for ${columnFiltersOrder[index]} is hidden`
+        `dropdown-content for ${columnFiltersOrder[index]} is hidden`,
       );
       await floatingFilter.dropdownToggle();
       assert.true(
         floatingFilter.dropdownExists,
-        `dropdown-content for ${columnFiltersOrder[index]} is shown`
+        `dropdown-content for ${columnFiltersOrder[index]} is shown`,
       );
     }
   });
@@ -169,17 +167,17 @@ module('Integration | Component | floating-filter', function (hooks) {
     await filters.objectAt(0).dropdownToggle();
     assert.true(
       filters.objectAt(0).filterTypeSelectExists,
-      'filter-type select exists for NUMBER-filter'
+      'filter-type select exists for NUMBER-filter',
     );
     await filters.objectAt(1).dropdownToggle();
     assert.true(
       filters.objectAt(1).filterTypeSelectExists,
-      'filter-type select exists for STRING-filter'
+      'filter-type select exists for STRING-filter',
     );
     await filters.objectAt(2).dropdownToggle();
     assert.false(
       filters.objectAt(2).filterTypeSelectExists,
-      'filter-type select does not exist for LIST-filter'
+      'filter-type select does not exist for LIST-filter',
     );
   });
 
@@ -192,17 +190,17 @@ module('Integration | Component | floating-filter', function (hooks) {
     await filters.objectAt(0).dropdownToggle();
     assert.true(
       filters.objectAt(0).applyFilterExists,
-      'apply-filter button exists for NUMBER-filter'
+      'apply-filter button exists for NUMBER-filter',
     );
     await filters.objectAt(1).dropdownToggle();
     assert.true(
       filters.objectAt(1).applyFilterExists,
-      'apply-filter button exists for STRING-filter'
+      'apply-filter button exists for STRING-filter',
     );
     await filters.objectAt(2).dropdownToggle();
     assert.true(
       filters.objectAt(2).applyFilterExists,
-      'apply-filter button exists for LIST-filter'
+      'apply-filter button exists for LIST-filter',
     );
   });
 
@@ -215,19 +213,19 @@ module('Integration | Component | floating-filter', function (hooks) {
     await filters.objectAt(2).dropdownToggle();
     assert.true(
       filters.objectAt(2).listFilterOptionsExists,
-      'list with options exists'
+      'list with options exists',
     );
     assert.true(
       filters.objectAt(2).filterForListFilterOptionsExists,
-      'filter for list exists'
+      'filter for list exists',
     );
     assert.true(
       filters.objectAt(2).selectAllListFilterOptionsExists,
-      'select-all btn exists'
+      'select-all btn exists',
     );
     assert.true(
       filters.objectAt(2).deselectAllListFilterOptionsExists,
-      'deselect-all btn exists'
+      'deselect-all btn exists',
     );
   });
 
@@ -246,14 +244,14 @@ module('Integration | Component | floating-filter', function (hooks) {
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(0),
       ['1'],
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(numberFilter.filterInputValue, '= 1');
     await numberFilter.clearFilter();
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(0),
       numberFilterColumnValues,
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(numberFilter.filterInputValue, '');
   });
@@ -273,14 +271,14 @@ module('Integration | Component | floating-filter', function (hooks) {
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(0),
       ['0', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(numberFilter.filterInputValue, '!= 1');
     await numberFilter.clearFilter();
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(0),
       numberFilterColumnValues,
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(numberFilter.filterInputValue, '');
   });
@@ -300,14 +298,14 @@ module('Integration | Component | floating-filter', function (hooks) {
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(0),
       ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(numberFilter.filterInputValue, '> 1');
     await numberFilter.clearFilter();
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(0),
       numberFilterColumnValues,
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(numberFilter.filterInputValue, '');
   });
@@ -327,14 +325,14 @@ module('Integration | Component | floating-filter', function (hooks) {
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(0),
       ['0'],
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(numberFilter.filterInputValue, '< 1');
     await numberFilter.clearFilter();
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(0),
       numberFilterColumnValues,
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(numberFilter.filterInputValue, '');
   });
@@ -354,14 +352,14 @@ module('Integration | Component | floating-filter', function (hooks) {
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(0),
       ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(numberFilter.filterInputValue, '>= 1');
     await numberFilter.clearFilter();
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(0),
       numberFilterColumnValues,
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(numberFilter.filterInputValue, '');
   });
@@ -381,14 +379,14 @@ module('Integration | Component | floating-filter', function (hooks) {
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(0),
       ['0', '1'],
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(numberFilter.filterInputValue, '<= 1');
     await numberFilter.clearFilter();
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(0),
       numberFilterColumnValues,
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(numberFilter.filterInputValue, '');
   });
@@ -409,14 +407,14 @@ module('Integration | Component | floating-filter', function (hooks) {
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(0),
       ['1', '2', '3'],
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(numberFilter.filterInputValue, '1 - 3');
     await numberFilter.clearFilter();
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(0),
       numberFilterColumnValues,
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(numberFilter.filterInputValue, '');
   });
@@ -436,14 +434,14 @@ module('Integration | Component | floating-filter', function (hooks) {
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(1),
       ['AB', 'AB'],
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(stringFilter.filterInputValue, '= AB');
     await stringFilter.clearFilter();
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(1),
       stringFilterColumnValues,
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(stringFilter.filterInputValue, '');
   });
@@ -463,14 +461,14 @@ module('Integration | Component | floating-filter', function (hooks) {
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(1),
       ['BC', 'CD', 'DE', 'EF', 'FG', 'GH', 'HI', 'IJ', 'JK', 'KL'],
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(stringFilter.filterInputValue, '!= AB');
     await stringFilter.clearFilter();
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(1),
       stringFilterColumnValues,
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(stringFilter.filterInputValue, '');
   });
@@ -490,14 +488,14 @@ module('Integration | Component | floating-filter', function (hooks) {
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(1),
       ['AB', 'AB'],
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(stringFilter.filterInputValue, '^ A');
     await stringFilter.clearFilter();
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(1),
       stringFilterColumnValues,
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(stringFilter.filterInputValue, '');
   });
@@ -517,14 +515,14 @@ module('Integration | Component | floating-filter', function (hooks) {
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(1),
       ['BC', 'CD', 'DE', 'EF', 'FG', 'GH', 'HI', 'IJ', 'JK', 'KL'],
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(stringFilter.filterInputValue, '!^ A');
     await stringFilter.clearFilter();
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(1),
       stringFilterColumnValues,
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(stringFilter.filterInputValue, '');
   });
@@ -544,14 +542,14 @@ module('Integration | Component | floating-filter', function (hooks) {
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(1),
       ['AB', 'AB'],
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(stringFilter.filterInputValue, 'B $');
     await stringFilter.clearFilter();
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(1),
       stringFilterColumnValues,
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(stringFilter.filterInputValue, '');
   });
@@ -571,14 +569,14 @@ module('Integration | Component | floating-filter', function (hooks) {
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(1),
       ['BC', 'CD', 'DE', 'EF', 'FG', 'GH', 'HI', 'IJ', 'JK', 'KL'],
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(stringFilter.filterInputValue, 'B !$');
     await stringFilter.clearFilter();
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(1),
       stringFilterColumnValues,
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(stringFilter.filterInputValue, '');
   });
@@ -598,14 +596,14 @@ module('Integration | Component | floating-filter', function (hooks) {
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(1),
       ['AB', 'BC', 'AB', 'BC'],
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(stringFilter.filterInputValue, '+ B');
     await stringFilter.clearFilter();
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(1),
       stringFilterColumnValues,
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(stringFilter.filterInputValue, '');
   });
@@ -625,14 +623,14 @@ module('Integration | Component | floating-filter', function (hooks) {
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(1),
       ['CD', 'DE', 'EF', 'FG', 'GH', 'HI', 'IJ', 'JK', 'KL', 'LM'],
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(stringFilter.filterInputValue, '- B');
     await stringFilter.clearFilter();
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(1),
       stringFilterColumnValues,
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(stringFilter.filterInputValue, '');
   });
@@ -655,14 +653,14 @@ module('Integration | Component | floating-filter', function (hooks) {
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(1),
       ['', '', ''],
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(stringFilter.filterInputValue, '""');
     await stringFilter.clearFilter();
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(1),
       ['', '', '', 'DE', 'EF', 'FG', 'GH', 'HI', 'IJ', 'JK'],
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(stringFilter.filterInputValue, '');
   });
@@ -685,14 +683,14 @@ module('Integration | Component | floating-filter', function (hooks) {
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(1),
       ['DE', 'EF', 'FG', 'GH', 'HI', 'IJ', 'JK', 'KL', 'LM', 'MN'],
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(stringFilter.filterInputValue, '!""');
     await stringFilter.clearFilter();
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(1),
       ['', '', '', 'DE', 'EF', 'FG', 'GH', 'HI', 'IJ', 'JK'],
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(stringFilter.filterInputValue, '');
   });
@@ -711,17 +709,17 @@ module('Integration | Component | floating-filter', function (hooks) {
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(2),
       stringFilterColumnValues,
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(
       listFilter.filterInputValue,
-      'Any of (15) AB, BC, CD, DE, EF, FG, GH, HI, IJ, JK, KL, LM, MN, NO, OP'
+      'Any of (15) AB, BC, CD, DE, EF, FG, GH, HI, IJ, JK, KL, LM, MN, NO, OP',
     );
     await listFilter.clearFilter();
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(2),
       stringFilterColumnValues,
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(listFilter.filterInputValue, '');
   });
@@ -740,15 +738,15 @@ module('Integration | Component | floating-filter', function (hooks) {
     assert.strictEqual(this.modelsTablePageObject.rows.length, 1);
     assert.ok(
       /Show 0 - 0 of 0( clear)? Clear all filters/.test(
-        this.modelsTablePageObject.summary
-      )
+        this.modelsTablePageObject.summary,
+      ),
     );
     assert.strictEqual(listFilter.filterInputValue, 'Any of (0) ');
     await listFilter.clearFilter();
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(2),
       stringFilterColumnValues,
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(listFilter.filterInputValue, '');
   });
@@ -769,14 +767,14 @@ module('Integration | Component | floating-filter', function (hooks) {
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(1),
       ['AB', 'BC', 'AB', 'BC'],
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(listFilter.filterInputValue, 'Any of (2) AB, BC');
     await listFilter.clearFilter();
     assert.deepEqual(
       this.modelsTablePageObject.getColumnCells(2),
       stringFilterColumnValues,
-      'valid rows are shown'
+      'valid rows are shown',
     );
     assert.strictEqual(listFilter.filterInputValue, '');
   });
@@ -792,7 +790,7 @@ module('Integration | Component | floating-filter', function (hooks) {
     assert.deepEqual(
       listFilter.listFilterOptions.map((opt) => opt.content),
       allListFilterOptions,
-      'valid rows are shown'
+      'valid rows are shown',
     );
 
     await listFilter.filterForListFilterOptions('B');
@@ -800,7 +798,7 @@ module('Integration | Component | floating-filter', function (hooks) {
     assert.deepEqual(
       listFilter.listFilterOptions.map((opt) => opt.content),
       ['AB', 'BC'],
-      'valid rows are shown'
+      'valid rows are shown',
     );
 
     await listFilter.filterForListFilterOptions('');
@@ -808,7 +806,7 @@ module('Integration | Component | floating-filter', function (hooks) {
     assert.deepEqual(
       listFilter.listFilterOptions.map((opt) => opt.content),
       allListFilterOptions,
-      'valid rows are shown'
+      'valid rows are shown',
     );
   });
 });
