@@ -17,6 +17,6 @@ ember install ember-models-table-floating-filter
 
 > Compatible with `ember-models-table@4.x`
 
-* Demo for `ember-bootstrap-v4` theme - [bs4](http://onechiporenko.github.io/ember-models-table/v.4/bs4/#/examples/floating-filter)
-* Demo for `ember-bootstrap-v5` theme - [bs5](http://onechiporenko.github.io/ember-models-table/v.4/bs5/#/examples/floating-filter)
-* Demo for `plain-html` theme - [plain-html](http://onechiporenko.github.io/ember-models-table/v.4/plain-html/#/examples/floating-filter)
+* Demo for `ember-bootstrap-v4` theme - [bs4](http://onechiporenko.github.io/ember-models-table/v.5/bs4/#/examples/floating-filter)
+* Demo for `ember-bootstrap-v5` theme - [bs5](http://onechiporenko.github.io/ember-models-table/v.5/bs5/#/examples/floating-filter)
+* Demo for `plain-html` theme - [plain-html](http://onechiporenko.github.io/ember-models-table/v.5/plain-html/#/examples/floating-filter)
