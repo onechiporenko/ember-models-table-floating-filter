@@ -28,7 +28,8 @@
   padding: 12px 16px;
 }
 
-.float-filter-dropdown-menu form select, .float-filter-dropdown-menu form input {
+.float-filter-dropdown-menu form select,
+.float-filter-dropdown-menu form input {
   margin-bottom: 5px;
 }
 
