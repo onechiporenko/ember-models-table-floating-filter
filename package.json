@@ -125,7 +125,7 @@
     "stylelint-config-standard": "^34.0.0",
     "stylelint-prettier": "^4.1.0",
     "typedoc": "^0.21.9",
-    "typedoc-plugin-rename-defaults": "^0.3.0",
+    "typedoc-plugin-rename-defaults": "^0.7.0",
     "typescript": "^4.7.4",
     "webpack": "^5.89.0"
   },
