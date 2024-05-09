@@ -2235,7 +2235,7 @@
     broccoli-funnel "^3.0.8"
     semver "^7.3.8"
 
-"@embroider/macros@^0.50.0 || ^1.0.0", "@embroider/macros@^1.12.0", "@embroider/macros@^1.15.0", "@embroider/macros@^1.8.0":
+"@embroider/macros@^0.50.0 || ^1.0.0", "@embroider/macros@^1.12.0", "@embroider/macros@^1.16.1", "@embroider/macros@^1.8.0":
   version "1.16.1"
   resolved "https://registry.yarnpkg.com/@embroider/macros/-/macros-1.16.1.tgz#925c947ae00d7937d1c6b1ffb0d778924642c67b"
   integrity sha512-yBavtQBbiCjIW4tTNdoS+5/eu3mckZImrcVFkloRvZ5ZWvs2zqnLJVtfNsPMxhWu6dknFlmLqfuT30+kqnsQbg==
@@ -2361,14 +2361,13 @@
     resolve "^1.20.0"
 
 "@embroider/util@^1.0.0", "@embroider/util@^1.11.0", "@embroider/util@^1.12.0":
-  version "1.13.0"
-  resolved "https://registry.yarnpkg.com/@embroider/util/-/util-1.13.0.tgz#075c0be2955505677e7fd834847b1e7b30b5e11a"
-  integrity sha512-29NeyZ8jvcQXCZThaARpbU9nBNMXj/5dCuQmFmxyEC2AcHFzBBhhL0ebv6VI2e3f44g+pAFbCMbN434VBh2xqQ==
+  version "1.13.1"
+  resolved "https://registry.yarnpkg.com/@embroider/util/-/util-1.13.1.tgz#c6d4a569b331cbf805e68e7fa6602f248438bde6"
+  integrity sha512-MRbs2FPO4doQ31YHIYk+QKChEs7k15aTsMk8QmO4eKiuQq9OT0sr1oasObZyGB8cVVbr29WWRWmsNirxzQtHIg==
   dependencies:
-    "@babel/core" "^7.24.0"
-    "@embroider/macros" "^1.15.0"
+    "@embroider/macros" "^1.16.1"
     broccoli-funnel "^3.0.5"
-    ember-cli-babel "^8.2.0"
+    ember-cli-babel "^7.26.11"
 
 "@eslint-community/eslint-utils@^4.1.2", "@eslint-community/eslint-utils@^4.2.0", "@eslint-community/eslint-utils@^4.4.0":
   version "4.4.0"
@@ -4977,9 +4976,9 @@ can-symlink@^1.0.0:
     tmp "0.0.28"
 
 caniuse-lite@^1.0.30001587:
-  version "1.0.30001615"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001615.tgz#7c2c8772db681b6dee74d81d6550db68f2d28842"
-  integrity sha512-1IpazM5G3r38meiae0bHRnPhz+CBQ3ZLqbQMtrg+AsTPKAXgW38JNsXkyZ+v8waCsDmPq87lmfun5Q2AGysNEQ==
+  version "1.0.30001616"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001616.tgz#4342712750d35f71ebba9fcac65e2cf8870013c3"
+  integrity sha512-RHVYKov7IcdNjVHJFNY/78RdG4oGVjbayxv8u5IO74Wv7Hlq4PnJE6mo/OjFijjVFNy5ijnCt6H3IIo4t+wfEw==
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -5853,9 +5852,9 @@ ee-first@1.1.1:
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
 electron-to-chromium@^1.4.668:
-  version "1.4.754"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.754.tgz#20a9f3cc80e0fb6a804b86605e55da16918a58b0"
-  integrity sha512-7Kr5jUdns5rL/M9wFFmMZAgFDuL2YOnanFH4OI4iFzUqyh3XOL7nAGbSlSMZdzKMIyyTpNSbqZsWG9odwLeKvA==
+  version "1.4.756"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.756.tgz#7b872ed8c8c5bee571be771730225d6d2a37fe45"
+  integrity sha512-RJKZ9+vEBMeiPAvKNWyZjuYyUqMndcP1f335oHqn3BEQbs2NFtVrnK5+6Xg5wSM9TknNNpWghGDUCKGYF+xWXw==
 
 ember-assign-helper@^0.4.0:
   version "0.4.0"
@@ -10080,12 +10079,12 @@ minimatch@^9.0.3, minimatch@^9.0.4:
   dependencies:
     brace-expansion "^2.0.1"
 
-minimist@^1.1.1, minimist@^1.2.0:
+minimist@^1.1.1:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.7.tgz#daa1c4d91f507390437c6a8bc01078e7000c4d18"
   integrity sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==
 
-minimist@^1.2.5, minimist@^1.2.6:
+minimist@^1.2.0, minimist@^1.2.5, minimist@^1.2.6:
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.8.tgz#c1a464e7693302e082a075cee0c057741ac4772c"
   integrity sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==
@@ -13051,9 +13050,9 @@ upath@^2.0.1:
   integrity sha512-1uEe95xksV1O0CYKXo8vQvN1JEbtJp7lb7C5U9HMsIp6IVwntkH/oNUzyVNQSd4S1sYk2FpSSW44FqMc8qee5w==
 
 update-browserslist-db@^1.0.13:
-  version "1.0.14"
-  resolved "https://registry.yarnpkg.com/update-browserslist-db/-/update-browserslist-db-1.0.14.tgz#46a9367c323f8ade9a9dddb7f3ae7814b3a0b31c"
-  integrity sha512-JixKH8GR2pWYshIPUg/NujK3JO7JiqEEUiNArE86NQyrgUuZeTlZQN3xuS/yiV5Kb48ev9K6RqNkaJjXsdg7Jw==
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/update-browserslist-db/-/update-browserslist-db-1.0.15.tgz#60ed9f8cba4a728b7ecf7356f641a31e3a691d97"
+  integrity sha512-K9HWH62x3/EalU1U6sjSZiylm9C8tgq2mSvshZpqc7QE69RaA2qjhkW2HlNA0tFpEbtyFz7HTqbSdN4MSwUodA==
   dependencies:
     escalade "^3.1.2"
     picocolors "^1.0.0"
