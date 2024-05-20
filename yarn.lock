@@ -9251,9 +9251,9 @@ lcid@^3.0.0:
     invert-kv "^3.0.0"
 
 lcov-result-merger@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/lcov-result-merger/-/lcov-result-merger-5.0.0.tgz#44b0ca839697c73622fc5111db4277caebee1684"
-  integrity sha512-IIY0yhvNT2Zda6WKeTYZVK/bGTJeRyRY7KvoI490DUkPXZ1M7KfiiZxxxCuMoAfY3d+4a1ibS201+D6mj78AYA==
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/lcov-result-merger/-/lcov-result-merger-5.0.1.tgz#39e3cfef3f84dc1a73736c139e735b58fbb2eeed"
+  integrity sha512-i53RjTYfqbHgerqGtuJjDfARDU340zNxXrJudQZU3o8ak9rrx8FDQUKf38Cjm6MtbqonqiDFmoKuUe++uZbvOg==
   dependencies:
     fast-glob "^3.2.11"
     yargs "^16.2.0"
