@@ -50,8 +50,6 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.25.1",
-    "@babel/helper-environment-visitor": "^7.24.7",
-    "@babel/helper-split-export-declaration": "^7.24.7",
     "@babel/plugin-proposal-decorators": "^7.24.7",
     "@ember/optional-features": "^2.1.0",
     "@ember/string": "^3.1.1",
@@ -103,7 +101,7 @@
     "ember-models-table": "^5.3.0",
     "ember-modifier": "4.1.0",
     "ember-page-title": "^8.2.3",
-    "ember-power-select": "^7.1.0",
+    "ember-power-select": "^8.3.0",
     "ember-qunit": "^8.1.0",
     "ember-resolver": "^11.0.1",
     "ember-source": "~5.11.0",
