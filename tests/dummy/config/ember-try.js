@@ -91,7 +91,7 @@ module.exports = async function () {
           devDependencies: {
             'bootstrap-sass': '3.4.1',
             bootstrap: '4.4.1',
-            'ember-bootstrap': '^5.0.0',
+            'ember-bootstrap': '^6.3.3',
           },
         },
       },
@@ -104,7 +104,7 @@ module.exports = async function () {
           devDependencies: {
             'bootstrap-sass': '3.4.1',
             bootstrap: '4.4.1',
-            'ember-bootstrap': '^5.0.0',
+            'ember-bootstrap': '^6.3.3',
             'ember-source': await getChannelURL('beta'),
           },
         },
@@ -117,8 +117,8 @@ module.exports = async function () {
         npm: {
           devDependencies: {
             'bootstrap-sass': '3.4.1',
-            bootstrap: '5.1.3',
-            'ember-bootstrap': '^5.0.0',
+            bootstrap: '^5.0.0',
+            'ember-bootstrap': '^6.3.3',
           },
         },
       },
@@ -130,8 +130,8 @@ module.exports = async function () {
         npm: {
           devDependencies: {
             'bootstrap-sass': '3.4.1',
-            bootstrap: '5.1.3',
-            'ember-bootstrap': '^5.0.0',
+            bootstrap: '^5.0.0',
+            'ember-bootstrap': '^6.3.3',
             'ember-source': await getChannelURL('beta'),
           },
         },
