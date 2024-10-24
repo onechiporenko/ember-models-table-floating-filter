@@ -16,12 +16,12 @@ as |FloatingFilter|
     <div
       {{did-insert this.updateFilterTypeOnInit}}
       class="filter-wrapper">
-      <Input
+      <input
         aria-label=""
         class="{{@themeInstance.input}}"
         readonly="readonly"
-        @type="text"
-        @value={{this.filtersHumanReadable}}/>
+        type="text"
+        value={{this.filtersHumanReadable}}/>
       <button
         type="button"
         class="clearFilterIcon {{@themeInstance.buttonLink}}"
@@ -48,11 +48,13 @@ as |FloatingFilter|
             <form>
               {{#if this.isListFilterType}}
                 <div>
-                  <Input
+                  <input
                     aria-label=""
                     class="{{@themeInstance.input}} filter-list-options"
-                    @type="text"
-                    @value={{this.filterForListFilterOptions}}/>
+                    type="text"
+                    value={{this.filterForListFilterOptions}}
+                    {{on "input" this.updateFilterListFilterOptions}}
+                  />
                 </div>
                 <div>
                   <button
@@ -87,21 +89,25 @@ as |FloatingFilter|
                 </div>
                 {{#if this.showFirstArgInput}}
                   <div>
-                    <Input
+                    <input
                       aria-label="First Arg"
                       class="{{@themeInstance.input}} first-arg"
-                      @type={{this.argsInputType}}
-                      @value={{this.filterArgsFirst}} />
+                      type={{this.argsInputType}}
+                      value={{this.filterArgsFirst}}
+                      {{on "input" this.setFirstArg}}
+                    />
                   </div>
                 {{/if}}
                 {{#if this.showSecondArgInput}}
                   <div> - </div>
                   <div>
-                    <Input
+                    <input
                       aria-label="Second Arg"
                       class="{{@themeInstance.input}} second-arg"
-                      @type={{this.argsInputType}}
-                      @value={{this.filterArgsSecond}} />
+                      type={{this.argsInputType}}
+                      value={{this.filterArgsSecond}}
+                      {{on "input" this.setSecondArg}}
+                    />
                   </div>
                 {{/if}}
               {{/if}}

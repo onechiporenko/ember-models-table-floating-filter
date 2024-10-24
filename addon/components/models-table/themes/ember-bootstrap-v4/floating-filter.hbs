@@ -16,12 +16,13 @@ as |FloatingFilter|
     <div
       {{did-insert this.updateFilterTypeOnInit}}
       class="filter-wrapper input-group">
-      <Input
+      <input
         aria-label=""
         class="{{@themeInstance.input}}"
         readonly="readonly"
-        @type="text"
-        @value={{this.filtersHumanReadable}}/>
+        type="text"
+        value={{this.filtersHumanReadable}}
+      />
       <this.BsDropdown
         class="input-group-append"
         @closeOnMenuClick={{false}}
@@ -47,11 +48,13 @@ as |FloatingFilter|
             {{#if this.isListFilterType}}
               <div class="row mb-2">
                 <div class="col">
-                  <Input
+                  <input
                     aria-label=""
                     class="{{@themeInstance.input}} filter-list-options"
-                    @type="text"
-                    @value={{this.filterForListFilterOptions}} />
+                    type="text"
+                    value={{this.filterForListFilterOptions}}
+                    {{on "input" this.updateFilterListFilterOptions}}
+                  />
                 </div>
               </div>
               <div class="row mb-2">
@@ -93,21 +96,25 @@ as |FloatingFilter|
               <div class="form-row g-2 mb-2">
                 {{#if this.showFirstArgInput}}
                   <div class="col-auto">
-                    <Input
+                    <input
                       aria-label="First Arg"
                       class="{{@themeInstance.input}} first-arg"
-                      @type={{this.argsInputType}}
-                      @value={{this.filterArgsFirst}} />
+                      type={{this.argsInputType}}
+                      value={{this.filterArgsFirst}}
+                      {{on "input" this.setFirstArg}}
+                    />
                   </div>
                 {{/if}}
                 {{#if this.showSecondArgInput}}
                   <div class="col-auto"> -</div>
                   <div class="col-auto">
-                    <Input
+                    <input
                       aria-label="Second Arg"
                       class="{{@themeInstance.input}} second-arg"
-                      @type={{this.argsInputType}}
-                      @value={{this.filterArgsSecond}} />
+                      type={{this.argsInputType}}
+                      value={{this.filterArgsSecond}}
+                      {{on "input" this.setSecondArg}}
+                    />
                   </div>
                 {{/if}}
               </div>

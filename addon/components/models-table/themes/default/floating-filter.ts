@@ -2,11 +2,10 @@ import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { isBlank, isNone } from '@ember/utils';
-import { EmberRunTimer } from '@ember/runloop/types';
-import { cancel, debounce } from '@ember/runloop';
 import { RowFilteringCellArgs } from 'ember-models-table/interfaces/components/models-table/themes/default/row-filtering-cell-args.interface';
 import { SelectOption } from 'ember-models-table/interfaces/select-option.interface';
 import { ModelsTableDataItem } from 'ember-models-table/types/models-table-data-item.type';
+import { cancelDebounce, debounceTask } from 'ember-lifeline';
 
 export interface FloatingFilterArgs extends RowFilteringCellArgs {
   clearColumnFilter: (e: Event) => boolean;
@@ -54,7 +53,7 @@ export interface FloatingFilterOptions {
 export const columnListFloatingFilterFunction = (
   cellValue: string,
   floatingFilterValue: string,
-  row: ModelsTableDataItem,
+  row: ModelsTableDataItem, // eslint-disable-line @typescript-eslint/no-unused-vars
 ): boolean => {
   floatingFilterValue = floatingFilterValue || '{}';
   const { args } = JSON.parse(floatingFilterValue);
@@ -65,7 +64,7 @@ export const columnListFloatingFilterFunction = (
 export const columnNumberFloatingFilterFunction = (
   cellValue: string,
   floatingFilterValue: string,
-  row: ModelsTableDataItem,
+  row: ModelsTableDataItem, // eslint-disable-line @typescript-eslint/no-unused-vars
 ): boolean => {
   floatingFilterValue = floatingFilterValue || '{}';
   const { type, args } = JSON.parse(floatingFilterValue);
@@ -101,7 +100,7 @@ export const columnNumberFloatingFilterFunction = (
 export const columnStringFloatingFilterFunction = (
   cellValue: string,
   floatingFilterValue: string,
-  row: ModelsTableDataItem,
+  row: ModelsTableDataItem, // eslint-disable-line @typescript-eslint/no-unused-vars
 ): boolean => {
   floatingFilterValue = floatingFilterValue || '{}';
   const { type, args } = JSON.parse(floatingFilterValue);
@@ -156,10 +155,10 @@ export default class FloatingFilter extends Component<FloatingFilterArgs> {
   protected filterType = FilterType.EQ;
 
   @tracked
-  protected filterArgsFirst = null;
+  protected declare filterArgsFirst: string;
 
   @tracked
-  protected filterArgsSecond = null;
+  protected declare filterArgsSecond: string;
 
   @tracked
   protected listFilterOptions: FloatingFilterListOption[] = [];
@@ -169,9 +168,6 @@ export default class FloatingFilter extends Component<FloatingFilterArgs> {
 
   @tracked
   dropdownShown = false;
-
-  @tracked
-  declare timer: EmberRunTimer;
 
   protected get filterIcon(): string {
     return this.getThemeKeyValue(
@@ -414,17 +410,17 @@ export default class FloatingFilter extends Component<FloatingFilterArgs> {
   @action
   protected onToggleDropdown(): void {
     this.dropdownShown = !this.dropdownShown;
-    cancel(this.timer);
+    cancelDebounce(this, 'hideDropdown');
   }
 
   @action
   protected onHoverDropdown(): void {
-    cancel(this.timer);
+    cancelDebounce(this, 'hideDropdown');
   }
 
   @action
   protected onHideDropdown(): void {
-    this.timer = debounce(this, this.hideDropdown, 500, false);
+    debounceTask(this, 'hideDropdown', 500);
   }
 
   @action
@@ -494,5 +490,34 @@ export default class FloatingFilter extends Component<FloatingFilterArgs> {
   @action
   protected deselectAllListFilterOptions(): void {
     this.listFilterOptions.forEach((opt) => (opt.checked = false));
+  }
+
+  @action
+  protected setFirstArg(value: string | Event): void {
+    this.filterArgsFirst =
+      typeof value === 'string'
+        ? value
+        : (value.target as HTMLInputElement).value;
+  }
+
+  @action
+  protected setSecondArg(value: string | Event): void {
+    this.filterArgsSecond =
+      typeof value === 'string'
+        ? value
+        : (value.target as HTMLInputElement).value;
+  }
+
+  @action
+  protected setFilterForListFilterOptions(value: string): void {
+    this.filterForListFilterOptions = value;
+  }
+
+  @action
+  protected updateFilterListFilterOptions(value: string | Event): void {
+    this.filterForListFilterOptions =
+      typeof value === 'string'
+        ? value
+        : (value.target as HTMLInputElement).value;
   }
 }
